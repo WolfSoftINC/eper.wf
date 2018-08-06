@@ -1,0 +1,78 @@
+<?
+	$db = Db::connect();
+
+	if (isset($_COOKIE['user_is']) && $_COOKIE['user_is'] == 1)
+	{
+		$id = $_COOKIE['user_id'];
+
+		?><div class="product_box_main"><?
+		
+		$sql = "SELECT * FROM `buy` WHERE `user_id` = $id";
+
+		$result = $db -> prepare($sql);
+		$result -> execute();
+		$i = 0;
+
+		while ($row = $result->fetch())
+		{
+			$bid = $row['id'];
+			$id = $row['product_id'];
+			$sql = "SELECT * FROM `product` WHERE `id` = $id";
+
+			$b = $db->prepare($sql);
+			$b->execute();
+			$a = $b->fetch();
+			$i++;
+			?> <div class="product_box"><img class="product_box_image" src="../../../img/product/<?echo $id.'.'.$a['img']?>"><p class="product_box_name"><?echo $a['name'];?></p><p class="product_box_cost"><?echo $a['cost'];?> сом</p><p class="product_box_date"><?echo date("Y-m-d H:i:s", $row['dr']);?></p><div><p><?echo $row['number'];?> шт.</p><p>Сумма : <?echo $row['number'] * $a['cost'];?> сом</p><form method="POST" action="/do?id=<?echo $bid?>"><input type="submit" name="is_cancel" value="Отменить"></form><p>В течение</p><p class="timer" id="<?echo $i;?>"><?echo $row['dr']?></p><p>вам будеть доставлено!</p></div></div> <?
+		}
+		?><input type="hidden" id="size" value="<?echo $i;?>"><?
+
+		$id = $_COOKIE['user_id'];
+		$sql = "SELECT * FROM `want_buy` WHERE `user_id` = $id";
+
+		$result = $db->prepare($sql);
+		$result -> execute();
+		
+		while ($row = $result->fetch())
+		{
+			$id = $row['product_id'];
+			$sql = "SELECT * FROM `product` WHERE `id` = $id";
+
+			$b = $db->prepare($sql);
+			$b->execute();
+			$a = $b->fetch();
+
+			?> <div class="product_box"><img class="product_box_image" src="../../../img/product/<?echo $id.'.'.$a['img']?>"><p class="product_box_name"><?echo $a['name'];?></p><p class="product_box_cost"><?echo $a['cost']?> сом</p><p class="product_box_date"><?echo date("Y-m-d H:i:s", $row['dr']);?></p><div><form method="POST" action="/do?id=<?echo $id?>"><select class="product_box_number_value" name="number"><option><?echo $row['number'];?> шт.</option> <?for($j = 1; $j <= 100; $j++){ if ($a['number'] == $j) continue;?> <option><?echo $j;?> шт.</option> <?}?> </select> <input type="submit" name="is_del" value="Удалить"> <input type="submit" name="is_buy" value="Купить"></form></div></div> <?
+		}
+
+		?></div><?
+	}
+	else
+	{
+		if (!isset($_SESSION['box_product']))
+			$sz = 0;
+		else 
+		{	
+			$a = $_SESSION['box_product'];
+			$b = $_SESSION['box_time'];
+			$sz = sizeof($a);
+		}
+
+		?><div class="product_box_main"><?
+		for ($i = 0; $i < $sz; $i++)
+		{
+			if ($_SESSION['box_was_deleted'][$i] == 1)
+				continue;
+
+			$id = $a[$i];
+
+			$sql = "SELECT * FROM `product` WHERE `id` = $id";
+
+			$result = $db->prepare($sql);
+			$result->execute();
+			$row = $result->fetch();
+			?> <div class="product_box"><img class="product_box_image" src="../../../img/product/<?echo$id.'.'.$row['img']?>"><p class="product_box_name"><?echo $row['name'];?></p><p class="product_box_cost"><?echo $row['cost']?> сом</p><p class="product_box_date"><?echo date("Y-m-d H:i:s", $b[$i]);?></p><div><form method="POST" action="/do?id=<?echo $id;?>"><select class="product_box_number_value" name="number"><option><?echo $_SESSION['box_number'][$i];?> шт.</option> <?for($j = 1; $j <= 100; $j++){ if ($_SESSION['box_number'][$i] == $j) continue;?> <option><?echo $j;?> шт.</option> <?}?> </select> <input type="submit" name="is_del" value="Удалить"> <input type="submit" name="is_buy" value="Купить"></form></div></div> <?
+		}
+		?></div><?
+	}
+?> <script src="/js/jquery.js"></script><script src="/js/timer.js"></script>
