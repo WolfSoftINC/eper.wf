@@ -30,7 +30,7 @@
 					<p class = "product_box_cost"><?echo $a['cost'];?> сом</p>
 					<p class = "product_box_date"><?echo date("Y-m-d H:i:s", $row['dr']);?></p>
 				
-					<div>
+					<div class = "product_item">
 						<p><?echo $row['number'];?> шт.</p>
 						<p>Сумма : <?echo $row['number'] * $a['cost'];?> сом</p>	
 						<form method = "POST" action = "/do?id=<?echo $bid?>">
