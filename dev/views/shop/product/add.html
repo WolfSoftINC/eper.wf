@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="container">
+    <div class="form__wrap">
+      <form action="/" method="POST" class="form">
+        <div class="form__header">
+          <h2 class="form__headline">Добавление продукта</h2>
+        </div>
+        <div class="form__content">
+
+          <div class="frow">
+            <p class="frow__title">Фотография</p>
+            <input type="file">
+          </div>
+
+          <div class="frow">
+            <p class="frow__title">Название</p>
+            <input type="text" name="name" class="input input_form" placeholder="Название">
+          </div>
+
+          <div class="frow">
+            <p class="frow__title">Цена</p>
+            <input type="text" name="price" class="input input_form" placeholder="1000">
+          </div>
+
+          <div class="frow">
+            <p class="frow__title">Описание</p>
+            <div id="descrip" class="textarea" contenteditable="true" onmoses>sdfad</div>
+            <input type="hidden" name="descrip">
+          </div>
+
+        </div>
+        <div class="form__footer">
+          <input type="submit" name="ap" value="Добавить" class="button button_flat">
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
