@@ -1,7 +1,7 @@
 <?php
 class ProductController {
 
-  // index action
+  // index action page
   function IndexAction() {
     Connect::head();
 
@@ -31,7 +31,29 @@ class ProductController {
     Connect::view('', 'products');
     
     echo '<div>';
+  }
 
+  // add handler
+  function AddAction() {
+    if (isset($_POST['pa'])) {
+      Connect::handler('product');
+
+      ProductHandler::add();
+    }
+  }
+
+  // get list action
+  function GlistAction() {
+    if (isset($_POST['gl'])) {
+      Connect::model('product');
+
+      $data  = array(
+        'shop_id' => $_SESSION['shop_id'],
+      );
+
+      $list = ProductModel::glist($data);
+      echo json_encode($list);
+    }
   }
 }
 ?>

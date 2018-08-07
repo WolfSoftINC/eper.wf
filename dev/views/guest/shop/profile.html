@@ -23,64 +23,16 @@
   </div>
 
   <div class="section">
-    <div class="product__rows">
-      <div class="product__row">
-        <div class="product__cover">
-          <img src="/img/product/1.png" alt="" class="product__img">
-        </div>
-        <div class="product__info">
-          <a href="/product=12" class="product__title">Ручка</a>
-          <span class="product__price">$1000</span>
-        </div>
-        <div class="product__footer">
-          <a href="" class="product__button">
-            Купить
-          </a>
-        </div>
-      </div>
-      <div class="product__row">
-        <div class="product__cover">
-          <img src="/img/product/1.png" alt="" class="product__img">
-        </div>
-        <div class="product__info">
-          <a href="/product=12" class="product__title">Ручка</a>
-          <span class="product__price">$1000</span>
-        </div>
-        <div class="product__footer">
-          <a href="" class="product__button">
-            Купить
-          </a>
-        </div>
-      </div>
-      <div class="product__row">
-        <div class="product__cover">
-          <img src="/img/product/1.png" alt="" class="product__img">
-        </div>
-        <div class="product__info">
-          <a href="/product=12" class="product__title">Ручка</a>
-          <span class="product__price">$1000</span>
-        </div>
-        <div class="product__footer">
-          <a href="" class="product__button">
-            Купить
-          </a>
-        </div>
-      </div>
-      <div class="product__row">
-        <div class="product__cover">
-          <img src="/img/product/1.png" alt="" class="product__img">
-        </div>
-        <div class="product__info">
-          <a href="/product=12" class="product__title">Ручка</a>
-          <span class="product__price">$1000</span>
-        </div>
-        <div class="product__footer">
-          <a href="" class="product__button">
-            Купить
-          </a>
-        </div>
-      </div>
-    </div>
+    <div id="product_list" class="product__rows"></div>
+    <script src="/js/product.js"></script>
+
+    <script>
+      data = {
+        shop_id: 1,
+      };
+      
+      Product.gl('product_list', data);
+    </script>
     </div>
   </div>
 

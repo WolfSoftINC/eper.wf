@@ -1,7 +1,7 @@
 <section class="section">
   <div class="container">
     <div class="form__wrap">
-      <form action="/" method="POST" class="form">
+      <form action="/product/addhan" method="POST" class="form" enctype="multipart/form-data">
         <div class="form__header">
           <h2 class="form__headline">Добавление продукта</h2>
         </div>
@@ -9,7 +9,7 @@
 
           <div class="frow">
             <p class="frow__title">Фотография</p>
-            <input type="file">
+            <input type="file" name="img">
           </div>
 
           <div class="frow">
@@ -24,15 +24,20 @@
 
           <div class="frow">
             <p class="frow__title">Описание</p>
-            <div id="descrip" class="textarea" contenteditable="true" onmoses>sdfad</div>
+            <div id="descrip" class="textarea" contenteditable="true" onmouseleave="iddi('descrip', 'descrip')"></div>
             <input type="hidden" name="descrip">
           </div>
 
         </div>
         <div class="form__footer">
-          <input type="submit" name="ap" value="Добавить" class="button button_flat">
+          <input type="submit" name="pa" value="Добавить" class="button button_flat">
         </div>
       </form>
     </div>
   </div>
 </section>
+
+
+<script>
+  Connect.js('shop/form');
+</script>

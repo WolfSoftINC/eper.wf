@@ -6,6 +6,9 @@ switch ($_SESSION['user']) {
       // handler
       'shop/lhan' => 'shopHan/login',
 
+      // product
+      'product/list' => 'product/glist',
+
       'do' => 'user/do',
       'user/add_box' => 'user/add_box',
       'box' => 'user/box',
@@ -31,8 +34,12 @@ switch ($_SESSION['user']) {
   
   case 'shop':  
     return array(
+      'product/list' => 'product/glist',
+      'product/addhan' => 'product/add',
       'products' => 'product/list',
       'product' => 'product/index',
+
+      'logout' => 'shop/logout',
 
       '' => 'index/index',
     );

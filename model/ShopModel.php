@@ -23,6 +23,73 @@ class ShopModel {
   }
 
 
+  // get list
+  public static function getList($sort){
+    if (isset($sort['filter'])) {
+      $filter = 'WHERE '.$sort['filter'];
+    }
+
+    /*user list sort limit*/
+    if (isset($sort['limit'])) $limit = ' LIMIT '.$sort['limit'];
+    else $limit = " LIMIT 10";
+
+    if (isset($sort['table'])) $sort = $sort['table'];
+    else $sort = 'dr DESC';
+
+    $db = Db::connect();
+
+    $uList = array();
+
+    $sql = "SELECT product, name, fname, gender, avatar, db, city, phone, mail FROM user ";
+    
+    if (isset($filter)) $sql = $sql.$filter;
+
+    $sql = $sql." ORDER BY ".$sort.$limit;
+
+    $result = $db->prepare($sql);
+    $result->execute();
+
+    $i = 0;
+    $uList['cman'] = 0;
+    $uList['cwomen'] = 0;
+    while($row = $result->fetch()){
+      /*Данные поста*/
+      $uList[$i]['user_id'] = $row['user_id'];
+      $uList[$i]['name'] = $row['name'];
+      $uList[$i]['fname'] = $row['fname'];
+
+      /*user avatar*/
+      if (isset($row['avatar'])) {
+          $uList[$i]['avatar'] = $row['user_id'].'.'.$row['avatar'];
+      } else {
+          if ($row['gender'] == '1')
+              $uList[$i]['avatar'] = 'man.png';
+              else $uList[$i]['avatar'] = 'women.png';
+      }
+
+      /*user gender*/
+      if ($row['gender'] == '1') {
+        $uList['cman']++;
+      } else {
+        $uList['cwomen']++;
+      }
+
+      $uList[$i]['db'] = $row['db'];
+      $uList[$i]['phone'] = $row['phone'];
+      $uList[$i]['mail'] = $row['mail'];
+      $uList[$i]['city'] = $row['city'];
+      
+      $uList[$i]['city'] = User::getCity($row['city']);
+
+      $i++;
+    }
+
+    $uList['count'] = $i;
+
+    return $uList;
+  }
+
+
 
   /*check user id*/
   public static function id($id) {
@@ -176,72 +243,6 @@ class ShopModel {
       $row = $result->fetch();
 
       return $row['user_id'];
-  }
-
-  public static function getList($sort){
-    if (isset($sort['filter'])) {
-      $filter = 'WHERE '.$sort['filter'];
-    }
-
-    /*user list sort limit*/
-    if (isset($sort['limit'])) $limit = ' LIMIT '.$sort['limit'];
-    else $limit = " LIMIT 10";
-
-    if (isset($sort['table'])) $sort = $sort['table'];
-    else $sort = 'dr DESC';
-
-    require_once(ROOT.'/db.php');
-    $db = Db::connect();
-
-    $uList = array();
-
-    $sql = "SELECT user_id, name, fname, gender, avatar, db, city, phone, mail FROM user ";
-    
-    if (isset($filter)) $sql = $sql.$filter;
-
-    $sql = $sql." ORDER BY ".$sort.$limit;
-
-    $result = $db->prepare($sql);
-    $result->execute();
-
-    $i = 0;
-    $uList['cman'] = 0;
-    $uList['cwomen'] = 0;
-    while($row = $result->fetch()){
-      /*Данные поста*/
-      $uList[$i]['user_id'] = $row['user_id'];
-      $uList[$i]['name'] = $row['name'];
-      $uList[$i]['fname'] = $row['fname'];
-
-      /*user avatar*/
-      if (isset($row['avatar'])) {
-          $uList[$i]['avatar'] = $row['user_id'].'.'.$row['avatar'];
-      } else {
-          if ($row['gender'] == '1')
-              $uList[$i]['avatar'] = 'man.png';
-              else $uList[$i]['avatar'] = 'women.png';
-      }
-
-      /*user gender*/
-      if ($row['gender'] == '1') {
-        $uList['cman']++;
-      } else {
-        $uList['cwomen']++;
-      }
-
-      $uList[$i]['db'] = $row['db'];
-      $uList[$i]['phone'] = $row['phone'];
-      $uList[$i]['mail'] = $row['mail'];
-      $uList[$i]['city'] = $row['city'];
-      
-      $uList[$i]['city'] = User::getCity($row['city']);
-
-      $i++;
-    }
-
-    $uList['count'] = $i;
-
-    return $uList;
   }
 
   public static function get($uId) {

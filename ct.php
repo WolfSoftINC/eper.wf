@@ -84,9 +84,9 @@ class Connect {
     ?>
     <link rel="stylesheet" type="text/css" href="/css/grid.css">
 
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/ajax.js"></script>
     <script src="/js/ct.js"></script>
-    <script src="/js/libraly/jquery.js"></script>
-    <script src="/js/mw.js"></script>
     <?php
 
     $style = 'common.fonts.product.shop-profile';
@@ -130,17 +130,6 @@ class Connect {
     ',$script);
   }
 
-  /* Connect view */
-  public static function views($views){
-
-    $view_name = ucfirst($views);
-    $view_name = $view_name.'View';
-
-    $view_url = ROOT.'/views/'.$view_name.'.php';
-
-    if (file_exists($view_url)) require($view_url);
-  }
-
 	// connect html file
 	public static function view($category, $view_name){
 
@@ -175,6 +164,19 @@ class Connect {
 
     if (file_exists($model_url)) require($model_url);
     else if (isset($_SESSIOn['dev'])) echo 'File not found';
+  }
+
+  // Connect handler
+  public static function handler($handler) {
+
+    /* handler name */
+    $han_name = ucfirst($handler);
+    $han_name = $han_name.'Handler';
+
+    $han_url = ROOT.'/Handlers/'.$han_name.'.php';
+
+    if (file_exists($han_url)) require($han_url);
+    else if (isset($_SESSION['dev'])) echo 'File not found';
   }
 }
 

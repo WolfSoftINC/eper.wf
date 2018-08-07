@@ -1,0 +1,2 @@
+
+function iddi(id,name){}

@@ -1,22 +1,13 @@
 class Product {
 
   // get list
-  static gl(id, data) {
-
-    var str = '';
-    str += 'gl=1';
-
-    if (data['shop_id']) {
-      str += '&shop_id=' + data['shop_id']; 
-    }
-
+  static gl(id) {
     $.ajax({
       url: 'product/list',
       type: 'POST',
-      data: str,
+      data: 'gl=1',
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       success: function(list){
-        console.log(list);
         list = JSON.parse(list);
 
         list.forEach(function(data){
