@@ -27,12 +27,11 @@
 				<div class = "product_box">
 					<img class = "product_box_image" src="../../../img/product/<?echo $id.'.'.$a['img']?>">
 					<p class = "product_box_name"><?echo $a['name'];?></p>
-					<p class = "product_box_cost"><?echo $a['cost'];?> сом</p>
-					<p class = "product_box_date"><?echo date("Y-m-d H:i:s", $row['dr']);?></p>
-				
 					<div>
-						<p><?echo $row['number'];?> шт.</p>
-						<p>Сумма : <?echo $row['number'] * $a['cost'];?> сом</p>	
+						<p class = "product_box_cost"><?echo $a['cost'];?> сом</p>
+						<p>Сумма (<?echo $row['number']?> шт.) : <?echo $row['number'] * $a['cost'];?> сом</p>
+					</div>
+					<div>
 						<form method = "POST" action = "/do?id=<?echo $bid?>">
 							<input type="submit" name = "is_cancel" value = "Отменить">
 						</form>
