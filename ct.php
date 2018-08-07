@@ -89,12 +89,12 @@ class Connect {
     <script src="/js/mw.js"></script>
     <?php
 
-    $style = 'common.style.footer.fonts.contact.product';
+    $style = 'common.fonts.product.shop-profile';
 
     /* css style user */
     $AStyle = '';
-    $GStyle = '.index';
-    $UStyle = '';
+    $GStyle = '.guest';
+    $SStyle = '.shop';
     
     switch ($_SESSION['user']) {
       case 'admin':
@@ -105,9 +105,7 @@ class Connect {
         $style .= $GStyle;
         break;
 
-      case 'user':
-        $style .= $UStyle;
-        break;
+      case 'shop': $style .= $SStyle; break;
     }
 
     /*Подключаем стили*/
