@@ -264,16 +264,16 @@ $color-grey_d: #616161;
 }
 .product_cancel_button{
 	margin-top: 10px;
-	/*width: 90px;
-	height: 36px;*/
-	padding-left: 10px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	padding-right: 15px;
-	border-radius: 5%; /* TODO: prefix */
-	font-size: 15px;
-    background: white;
-	border: 1px solid grey;
+	margin-left: 20px;
+	padding: 12px 24px 13px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 600;
+	line-height: 17px;
+	background: #F44336;
+	height: 40px;
+	color: white;
 	cursor: pointer;
 }
 
@@ -287,10 +287,29 @@ $color-grey_d: #616161;
 	margin-right: 10px;
 }
 .product_delete_button{
+	margin-top: 10px;
+	margin-left: 20px;
+	padding: 12px 24px 13px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 600;
+	line-height: 17px;
 	background: #F44336;
-	width: 100px;
-	height: 30px;
+	height: 40px;
+	color: white;
+	cursor: pointer;
 }
 .product_buy_button{
-
+	margin-top: 10px;
+	padding: 12px 24px 13px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 600;
+	line-height: 17px;
+	background: #0f2868;
+	height: 40px;
+	color: white;
+	cursor: pointer;
 }
