@@ -4,6 +4,26 @@
 */
 class ShopModel {
 
+  /**/
+  public static function login($data){
+    $db = Db::connect();
+
+    $dUser = array();
+
+    $sql = "SELECT id FROM shop WHERE `login` = :login AND `password` = :password LIMIT 1";
+
+    $result = $db->prepare($sql);
+    $result->bindParam(":login", $data['login'], PDO::PARAM_STR);
+    $result->bindParam(":password", $data['password'], PDO::PARAM_STR);
+
+    $result->execute();
+    $row = $result->fetch();
+    if ($row) return $row['id'];
+    else return false;
+  }
+
+
+
   /*check user id*/
   public static function id($id) {
     if ($id > 10000) return false;
@@ -18,14 +38,6 @@ class ShopModel {
 
     if ((strlen($login) < 7) || (strlen($login) > 25) || (!preg_match('/^[a-zA-Z0-9_.]{7,25}$/',$login)) || (substr($login,0,1) == '_') || (substr($login,0,1) == '.')) return false;
     else return htmlspecialchars(trim($login));
-  }
-
-  // check password
-  public static function password($password){
-    if (strlen($password) == 0)
-      return false;
-    if (strlen($password) > 40) return false;
-    else return md5($password);
   }
 
   // check name
@@ -577,28 +589,6 @@ class ShopModel {
           $pass = code('3cvy7Xx', $pass);
           return ($pass);
       }
-  }
-
-  /**/
-  public static function login($phone, $password){
-      $db = Db::connect();
-
-      $dUser = array();
-
-      $sql = "SELECT user_id, name FROM user WHERE phone = :phone AND password = :password LIMIT 1";
-
-      $result = $db->prepare($sql);
-      $result->bindParam(":phone", $phone, PDO::PARAM_STR);
-      $result->bindParam(":password", $password, PDO::PARAM_STR);
-
-      $result->execute();
-      $row = $result->fetch();
-      if ($row){
-          $dUser['name'] = $row['name'];
-          $dUser['uId'] = $row['user_id'];
-
-          return $dUser;
-      } else return false;
   }
 
   public static function session(){

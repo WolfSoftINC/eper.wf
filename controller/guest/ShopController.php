@@ -1,5 +1,24 @@
 <?php
 class ShopController {
+
+  // profile action
+  function ProfileAction() {
+    Connect::head();
+
+    Connect::view('d', 'header');
+    Connect::view('', 'shop/profile');
+    Connect::view('d', 'footer');
+  }
+
+  // login page
+  function LoginAction() {
+    Connect::head();
+
+    Connect::view('d', 'header');
+    Connect::view('', 'shop/login');
+    Connect::view('d', 'footer');
+  }
+
   function RegistryAction() {
     Connect::head();
 

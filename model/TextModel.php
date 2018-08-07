@@ -34,13 +34,14 @@ class TextModel {
   public static function login($login){
     $login = trim($login);
 
-    if ((strlen($login) < 7) || (strlen($login) > 25) || (!preg_match('/^[a-zA-Z0-9_.]{7,25}$/',$login)) || (substr($login,0,1) == '_') || (substr($login,0,1) == '.')) return false;
-    else return htmlspecialchars(trim($login));
+    // if ((strlen($login) < 7) || (strlen($login) > 25) || (!preg_match('/^[a-zA-Z0-9_.]{7,25}$/',$login)) || (substr($login,0,1) == '_') || (substr($login,0,1) == '.')) return false;
+    //else 
+    return htmlspecialchars(trim($login));
   }
 
   // check password
   public static function password($password){
-    if (strlen($password) < 7 || strlen($password) > 32) return false;
+    if (strlen($password) < 5 || strlen($password) > 32) return false;
     else return md5($password);
   }
 }

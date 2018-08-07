@@ -1,5 +1,24 @@
 <?php
 class ProductController {
+
+  // index action
+  function IndexAction() {
+    Connect::head();
+
+    Connect::view('d', 'sidebar');
+
+    echo '<div id="page__layout">';
+
+    Connect::view('d', 'header');
+
+
+    if ($_GET['act'] == 'add') {
+      Connect::view('', 'product/add');
+    }
+    
+    echo '<div>';
+  }
+
   function ListAction() {
     Connect::head();
 
@@ -13,11 +32,6 @@ class ProductController {
     
     echo '<div>';
 
-  }
-
-  
-  function PageAction() {
-    
   }
 }
 ?>
