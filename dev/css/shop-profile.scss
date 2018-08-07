@@ -1,0 +1,83 @@
+$color-white: #fff;
+$color-black: #000;
+$color-blue_d: #0f2868;
+$color-blue_w: #709ce7;
+$color-pink: #fa244a;
+$color-grey: #c0c4cf;
+
+.sp {
+  &__hero {
+    width: 100%;
+    height: 80px;
+    // border-bottom: 1px solid $color-grey;
+
+    padding: 15px 0 0;
+    box-sizing: border-box;
+  }
+
+  &__nav {
+    height: 60px;
+  }
+
+  &__banner {
+    position: relative;
+
+    width: 100%;
+    height: 360px;
+
+    overflow: hidden;
+  }
+}
+
+// shop hero
+.shero {
+  &__link {
+    display: table;
+    margin: 0 auto;
+
+    padding: 10px;
+  }
+
+  &__logo {
+    height: 60px;
+  }
+}
+
+// shop nav
+.snav {
+  &__list {
+    display: table;
+    padding: 15px 0;
+
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &__item {
+    display: inline-block;
+    margin-left: 20px;
+
+    line-height: 30px;
+  }
+
+  &__link {
+    font-size: 17px;
+    font-weight: 500;
+    color: $color-blue_w;
+
+    text-transform: uppercase;
+
+    transition: color .2s linear;
+    
+    &:hover {
+      color: $color-blue_d;
+    }
+  }
+}
+
+// shop banner
+.sbanner {
+  &__img {
+    width: 100%;
+  }
+}
