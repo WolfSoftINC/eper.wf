@@ -1,0 +1,38 @@
+.section {
+  position: relative;
+  display: table;
+  width: 100%;
+  padding: 76px 0; }
+  .section__header {
+    position: relative;
+    display: table;
+    width: 100%; }
+  .section__headline {
+    display: block;
+    margin-bottom: .5em;
+    max-width: 12em;
+    font-size: 36px;
+    font-weight: 400;
+    color: #0f2868;
+    line-height: 1.2; }
+    .section__headline_left {
+      float: left; }
+    .section__headline_center {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center; }
+  .section__descrip {
+    display: block;
+    max-width: 32em;
+    margin-bottom: 1.5em;
+    font-size: 1rem;
+    font-weight: 400; }
+    .section__descrip_center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto; }
+  .section__text {
+    display: block;
+    max-width: 32em;
+    font-size: 14px;
+    color: #c0c4cf; }

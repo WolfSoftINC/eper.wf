@@ -3,7 +3,7 @@
   padding: 0; }
 
 body {
-  font-family: "sf", Segoe UI, 'Roboto', sans-serif;
+  font-family: sans-serif, "sf", Segoe UI, 'Roboto';
   line-height: 1.5; }
 
 :root {
