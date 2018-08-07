@@ -191,17 +191,33 @@ $color-grey_d: #616161;
 	margin: 20px;
 }
 .product_box_name{
-	float: left;
-	font-size: 40px;
-	margin-top: 70px;
+	font-size: 50px;
 	margin-left: 80px;
 }
+.product_box_name_un{
+	float: left;
+	font-size: 50px;
+	margin-left: 10px;
+	margin-top: 70px;
+}
 .product_box_cost{
+	color: #F44336;
+	font-size: 25px;
+}
+
+.product_box_cost_un{
 	float: left;
 	color: #F44336;
-	margin-top: 90px;
-	margin-left: 50px;
+	margin-left: 167px;
+	font-size: 40px;
+	margin-top: 77px;
 }
+
+.product_box_total{
+	margin-top: 50px;
+	font-size: 30px;
+}
+
 .product_box_date{
 	float: left;
 	margin-top: 90px;
@@ -218,14 +234,63 @@ $color-grey_d: #616161;
 }
 
 .product_box_number_value{
-	margin-top: 93px;
-	margin-left: 40px;
+	float: left;
+	margin-left: 180px;
+	font-size: 25px;
+	margin-top: 92px;
 }
 
 .product_box{
 	display: table;
 	box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
 	width: 100%;
-	padding: 10px;
+	padding: 15px;
 	margin-top: 50px;
+}
+.product_box_left{
+	margin-left: 2%;
+	display: block;
+	float: left;
+
+}
+.product_box_right{
+	margin-right: 100px;
+	display: block;
+	float: right;
+}
+.product_box_timer{
+	font-size: 30px;
+	color: grey;
+}
+.product_cancel_button{
+	margin-top: 10px;
+	/*width: 90px;
+	height: 36px;*/
+	padding-left: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 15px;
+	border-radius: 5%; /* TODO: prefix */
+	font-size: 15px;
+    background: white;
+	border: 1px solid grey;
+	cursor: pointer;
+}
+
+.product_box_bottom_left{
+	float: left;
+	margin-left: 20px;
+	font-size: 30px;
+}
+.product_box_bottom_right{
+	float: right;
+	margin-right: 10px;
+}
+.product_delete_button{
+	background: #F44336;
+	width: 100px;
+	height: 30px;
+}
+.product_buy_button{
+
 }

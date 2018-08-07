@@ -27,18 +27,17 @@
 				<div class = "product_box">
 					<img class = "product_box_image" src="../../../img/product/<?echo $id.'.'.$a['img']?>">
 					<p class = "product_box_name"><?echo $a['name'];?></p>
-					<p class = "product_box_cost"><?echo $a['cost'];?> сом</p>
-					<p class = "product_box_date"><?echo date("Y-m-d H:i:s", $row['dr']);?></p>
-				
-					<div>
-						<p><?echo $row['number'];?> шт.</p>
-						<p>Сумма : <?echo $row['number'] * $a['cost'];?> сом</p>	
-						<form method = "POST" action = "/do?id=<?echo $bid?>">
-							<input type="submit" name = "is_cancel" value = "Отменить">
-						</form>
+					<div class = "product_box_left">
+						<p class = "product_box_cost"><?echo $a['cost'];?> сом</p>
+						<p class = "product_box_total">Сумма (<?echo $row['number']?> шт.) : <?echo $row['number'] * $a['cost'];?> сом</p>
+					</div>
+					<div class = "product_box_right">
 						<p>В течение</p>
-						<p  class = "timer" id = "<?echo $i;?>"><?echo $row['dr']?></p>
+						<p  class = "product_box_timer" id = "<?echo $i;?>"><?echo $row['dr']?></p>
 						<p>вам будеть доставлено!</p>
+						<form method = "POST" action = "/do?id=<?echo $bid?>">
+							<input class = "product_cancel_button" type="submit" name = "is_cancel" value = "Отменить">
+						</form>
 					</div>			
 				</div>
 			<?
@@ -63,23 +62,31 @@
 			?>
 				<div class = "product_box">
 					<img class = "product_box_image" src="../../../img/product/<?echo $id.'.'.$a['img']?>">
-					<p class = "product_box_name"><?echo $a['name'];?></p>
-					<p class = "product_box_cost"><?echo $a['cost']?> сом</p>
-					<p class = "product_box_date"><?echo date("Y-m-d H:i:s", $row['dr']);?></p>
-				
-					<div>
-						<form method = "POST" action = "/do?id=<?echo $id?>">
-							<select class="product_box_number_value" name = "number">
-								<option><?echo $row['number'];?> шт.</option>
-								<?for($j = 1; $j <= 100; $j++){ if ($a['number'] == $j) continue;?>
-								<option><?echo $j;?> шт.</option>
-								<?}?>
-							</select>
+					<p class = "product_box_name_un"><?echo $a['name'];?></p>
+					<p class = "product_box_cost_un"><?echo $a['cost']?> сом</p>
 
-							<input type="submit" name = "is_del" value = "Удалить">
-							<input type="submit" name = "is_buy" value = "Купить">
-						</form>
-					</div>			
+
+					<form method = "POST" action = "/do?id=<?echo $id?>">
+						<select id = "number" class="product_box_number_value" name = "number">
+							<option selected><?echo $row['number']; ?> шт.</option>
+							<?for($j = 1; $j <= 100; $j++){ if ($row['number'] == $j) continue; ?>
+							<option><?echo $j; ?> шт.</option>
+							<?}?>
+						</select>
+						<hr style="width: 100%">
+						
+						<div class = "product_box_bottom">
+							<div class = "product_box_bottom_left">
+								<p id = "total">Сумма (<?echo $row['number'];?> шт.) : <?echo $row['number'] * $a['cost']?> сом</p>
+							</div>
+							
+							<input type = "hidden" id = "cost" value="<?echo $a['cost'];?>">
+							<div class = "product_box_bottom_right">
+								<input class =  "product_delete_button" type="submit" name = "is_del" value = "Удалить">
+								<input class =  "product__button" type="submit" name = "is_buy" value = "Купить">
+							</div>
+						</div>
+					</form>		
 				</div>
 			<?
 		}
@@ -114,21 +121,25 @@
 				<div class = "product_box">
 					<img class = "product_box_image" src="../../../img/product/<?echo$id.'.'.$row['img']?>">
 					<p class = "product_box_name"><?echo $row['name'];?></p>
-					<p class = "product_box_cost"><?echo $row['cost']?> сом</p>
-					<p class = "product_box_date"><?echo date("Y-m-d H:i:s", $b[$i]);?></p>					
+					<p class = "product_box_cost_un"><?echo $row['cost']?> сом</p>
 
-					<div>
-						<form method = "POST" action = "/do?id=<?echo $id;?>">
-							<select class="product_box_number_value" name = "number">
-								<option><?echo $_SESSION['box_number'][$i];?> шт.</option>
+					<form method = "POST" action = "/do?id=<?echo $id;?>">
+						
+						<select id = "number" name = "number">
+								<option selected><?echo $_SESSION['box_number'][$i];?> шт.</option>
 								<?for($j = 1; $j <= 100; $j++){ if ($_SESSION['box_number'][$i] == $j) continue;?>
 								<option><?echo $j;?> шт.</option>
 								<?}?>
-							</select>
+						</select>
+						<br><hr>
+						<div  class = "product_box_bottom">
+							<p id = "total">Сумма (<?echo $row['number'];?> шт.) : <?echo $_SESSION['box_number'][$i] * $row['cost']?> сом</p>
+							<input type = "hidden" id = "cost" value="<?echo $row['cost'];?>">
 							<input type="submit" name = "is_del" value = "Удалить">
 							<input type="submit" name = "is_buy" value = "Купить">
-						</form>
-					</div>
+						</div>
+					</form>
+
 				</div>
 			<?
 		}
@@ -138,3 +149,4 @@
 
 <script src = "/js/jquery.js"></script>
 <script src = "/js/timer.js"></script>
+<script src = "/js/total.js"></script>
