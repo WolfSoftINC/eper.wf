@@ -34,7 +34,7 @@ class ProductModel {
     if ((strlen($descrip) > 256) OR (strlen($descrip) < 1)) {
       return false;
     } else {
-      return htmlentities($descrip);
+      return $descrip;
     }
   }
 

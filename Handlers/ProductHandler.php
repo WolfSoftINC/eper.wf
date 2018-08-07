@@ -59,7 +59,7 @@ class ProductHandler {
       ImageModel::upload('img', $uImage);
 
       // redirect
-      header("Location: /");
+      header("Location: /products");
     } else {
       
       // redirect
