@@ -4,7 +4,7 @@ switch ($_SESSION['user']) {
     return array(
 
       // handler
-      'lhan' => 'handler/login',
+      'shop/lhan' => 'shopHan/login',
 
       'do' => 'user/do',
       'user/add_box' => 'user/add_box',
