@@ -1,38 +1,42 @@
 <?php
 class BoxController {
 
+  // box page
+  function PageAction(){
+    Connect::head();
+
+    Connect::view('d', 'header');
+    Connect::view('', 'user/box_product');
+    Connect::view('d', 'footer'); 
+  }
+
   // Product action
   function ProductAction() {
     if (isset($_POST['pa'])) {
+      Connect::model('box');
 
-      // sdfadsfs
+      // product id
+      $iProduct = $_POST['product_id'];
 
-      // check user
-      if (isset($_COOKIE['user_is']) && $_COOKIE['user_is']) {
+      // data
+      $data = array(
+        'product_id' => $iProduct,
+        'number' => 1,
+        'ip' => $_SERVER['REMOTE_ADDR'],
+        'dr'=> time(),
+      );
 
-        // product id
-        $iProduct = $_POST['product_id'];
+      print_r($data);
 
-        // data
-        $data = array(
-          'product_id' => $iProduct,
-          'number' => 1,
-          'user_id' => $_COOKIE['user_id'],
-          'dr'=> time(),
-        );
-
-        // add
-        $iBuy = BoxModel::aProduct($data);
-        if ($iBuy) {
-          exit('success');
-        } else exit('error');
-      } else {
-        exit('error');
-      }
+      // add
+      $iBuy = BoxModel::aProduct($data);
+      if ($iBuy) {
+        exit('success');
+      } else exit('error');
     }
   }
 
-  // change action
+  // // change action
   // function ChangeAction() {
   //   $id = $_GET['id'];
   //   $s = $_POST['number'];
@@ -104,8 +108,9 @@ class BoxController {
   //       array_push($_SESSION['box_was_deleted'], 0);
   //     }
   //   }
-  //   if (isset($_SERVER['HTTP_REFERER']))
-  //     header("Location: ".$_SERVER['HTTP_REFERER']);
+    
+  //   // redirect
+  //   header("Location: ".$_SERVER['HTTP_REFERER']);
   // }
 }
 ?>
