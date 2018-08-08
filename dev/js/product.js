@@ -16,11 +16,9 @@ class Product {
       data: str,
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       success: function(list){
-        console.log(list);
         list = JSON.parse(list);
 
         list.forEach(function(data){
-          console.log(data);
           var row = Product.row(data);
           $('#' + id).append(row);
         });
@@ -82,8 +80,10 @@ class Product {
     // button
     var button = $('<a/>',{
       class: 'product__button',
-      text: 'Купить',
+      text: 'Добавить',
+      onClick: 'Box.add('+ data['product_id'] +');',
     });
+    button.attr('data-product', data['product_id']);
     footer.append(button);
 
     return row;

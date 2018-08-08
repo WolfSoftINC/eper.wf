@@ -86,6 +86,7 @@ class Connect {
 
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/ajax.js"></script>
+    <script src="/js/box.js"></script>
     <script src="/js/ct.js"></script>
     <?php
 

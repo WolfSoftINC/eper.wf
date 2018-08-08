@@ -6,6 +6,9 @@ switch ($_SESSION['user']) {
       // handler
       'shop/lhan' => 'shopHan/login',
 
+      // box
+      '/box/padd' => 'box/product/add',
+
       // product
       'product/list' => 'product/glist',
 

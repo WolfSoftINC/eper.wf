@@ -21,12 +21,14 @@ $color-grey_d: #616161;
 	&__rows {
 		display: block;
 		margin-left: -20px;
+		margin-top: -20px;
 	}
 
 	&__row {
 		width: 100%;
 		max-width: 255px;
 		margin-left: 20px;
+		margin-top: 20px;
 
 		float: left;
 
@@ -112,6 +114,14 @@ $color-grey_d: #616161;
 
 		&:hover {
 			color: $color-pink;
+		}
+
+		&_added {
+			color: $color-pink;
+
+			&:hover {
+				color: $color-grey_d;
+			}
 		}
 	}
 }
