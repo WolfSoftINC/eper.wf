@@ -14,6 +14,3 @@ require_once(ROOT.'/db.php');
 
 $router = new Router();
 $router->run();
-
-// exit session
-// session_destroy();

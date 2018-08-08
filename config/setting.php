@@ -1,8 +1,8 @@
 <?php
 // session
-// if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
-//   $_SESSION['dev'] = true;
-// }
+if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+  $_SESSION['dev'] = true;
+}
 
 // session
 if (!isset($_SESSION['user'])) $_SESSION['user'] = 'guest';
