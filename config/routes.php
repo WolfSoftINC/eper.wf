@@ -6,28 +6,33 @@ switch ($_SESSION['user']) {
       // handler
       'shop/lhan' => 'shopHan/login',
 
+      // box page
+      'box' => 'box/page',
+
       // box
-      '/box/padd' => 'box/product/add',
+      'box/padd' => 'box/product/add',
 
       // product
       'product/list' => 'product/glist',
 
       'do' => 'user/do',
       'user/add_box' => 'user/add_box',
-      'box' => 'user/box',
       
       'kalem' => 'shop/profile/kalem',
+
+      // user handler
+      'user/sreg' => 'user/sreg',
       'user/product' => 'user/product',
       'user/logout' => 'user/logout',   
-      'user/sreg' => 'user/sreg',
       'user/slogin' => 'user/slogin',
+      
       'contact' => 'contact/page',
-
       'shop/reg' => 'shop/reg',
       'shop/sreg' => 'shop/sreg',
       'shop/registry' => 'shop/registry',
       'shop/login' => 'shop/login',
       
+      // user pages
       'login' => 'user/login',
       'registry' => 'user/registry',
       
