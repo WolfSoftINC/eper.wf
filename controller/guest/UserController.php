@@ -85,6 +85,14 @@ class UserController {
     Connect::view('d', 'footer');
   }
 
+  // User Profile
+
+  function ProfileAction(){
+      Connect::head();
+      Connect::view('d', 'header');
+      Connect::view('', 'user/profile');
+      Connect::view('d', 'footer');
+  }
 
   // logout
   function LogoutAction() {

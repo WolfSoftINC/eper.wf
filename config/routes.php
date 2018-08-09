@@ -2,7 +2,7 @@
 switch ($_SESSION['user']) {
   case 'guest':
     return array(
-
+      'profile' => 'user/profile',
       // handler
       'shop/lhan' => 'shopHan/login',
 
