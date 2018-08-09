@@ -10,6 +10,25 @@ class BoxController {
     Connect::view('d', 'footer'); 
   }
 
+
+  // buy
+  function BuyAction() {
+
+    // buy pages
+    if (isset($_GET['act'])) {
+      if ($_GET['act'] == 'delivery') {
+        Connect::head();
+        Connect::view('d', 'header');
+        Connect::view('', 'basket/delivery');
+        Connect::view('d', 'footer');
+      }
+    } else {
+      if (isset($_COOKIE['user_id'])) {
+        header('Location: /box/buy?act=delivery');
+      }
+    }
+  }
+
   // Product action
   function ProductAction() {
 
