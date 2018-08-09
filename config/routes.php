@@ -11,6 +11,7 @@ switch ($_SESSION['user']) {
       'box/padd' => 'box/product',
 
       // box page
+      'box/buy' => 'box/buy',
       'box' => 'box/page',
 
       // product
@@ -22,6 +23,8 @@ switch ($_SESSION['user']) {
       'kalem' => 'shop/profile/kalem',
 
       // user handler
+      'user/auth' => 'user/auth',
+
       'user/sreg' => 'user/sreg',
       'user/product' => 'user/product',
       'user/logout' => 'user/logout',   

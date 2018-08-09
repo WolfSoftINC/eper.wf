@@ -136,6 +136,16 @@ ul, ol {
 
     margin-top: -20px;
     margin-left: -20px;
+
+    &_2 {
+      @extend .cols;
+      & .col {
+        @extend .col;
+
+        width: calc(50% - 20px);
+      }
+    } 
+
     &_4 {
       @extend .cols;
       & .col {

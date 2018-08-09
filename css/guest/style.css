@@ -105,12 +105,12 @@
   font-size: 17px;
   font-weight: 400;
   line-height: 17px;
-  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  -moz-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer; }
   .button:hover {
-    box-shadow: 0px 10px 56px 24px rgba(0, 0, 0, 0.25); }
+    box-shadow: 0px 0px 64px 16px rgba(0, 0, 0, 0.16); }
   .button_wide {
     width: 100%; }
   .button_center {
@@ -129,6 +129,15 @@
       font-family: Awesome;
       font-size: 14px;
       padding-left: 10px; }
+  .button_blue {
+    background: #0f2868; }
+  .button_basket {
+    min-width: 200px;
+    display: inline-block;
+    margin-left: 32px;
+    text-align: center; }
+    .button_basket:first-child {
+      margin-left: 0; }
 
 .logo {
   display: table;

@@ -1,6 +1,66 @@
 <?php
 class UserController {
 
+  // user auth
+  function AuthAction() {
+
+    // user registry
+    if (isset($_POST['reg'])) {
+
+      // connect model
+      Connect::model('user');
+      Connect::model('handler');
+
+      // keys
+      $data = array(
+        0 => array(
+          'key' => 'user_id',
+          'value' => NULL,
+          'type' => 'int',
+          'check' => false,
+        ),
+        1 => array(
+          'key' => 'name',
+          'value' => UserModel::name($_POST['name']),
+          'type' => 'str',
+        ),
+        2 => array(
+          'key' => 'phone',
+          'value' => UserModel::phone($_POST['phone']),
+          'type' => 'str',
+        ),
+        3 => array(
+          'key' => 'mail',
+          'value' => UserModel::mail($_POST['mail']),
+          'type' => 'str',
+        ),
+        4 => array(
+          'key' => 'password',
+          'value' => UserModel::password($_POST['password']),
+          'type' => 'str',
+        ),
+        5 => array(
+          'key' => 'dr',
+          'value' => time(),
+          'type' => 'int',
+        ),
+      );
+
+      // check data
+      HandlerModel::cData($data);
+
+      // user registry
+      $iUser = UserModel::registry($data);
+      if (!$iUser) header("Location: ".$_SERVER['HTTP_REFERER']);
+
+      // cookie
+      setcookie("user_is", 1, time() + (86400 * 99), "/");
+      setcookie("user_id", $iUser, time() + (86400 * 99), "/");
+
+      header("Location: /eper.wf/box");
+    }
+  }
+
   // registry page
   function RegistryAction() {
     Connect::head();
@@ -220,84 +280,6 @@ class UserController {
        Connect::view('', 'user/product_profile');
     }
     Connect::view('d', 'footer');
-  }
-
-  // user registry
-  function SregAction() {
-    if (isset($_POST['reg'])) {
-      Connect::model('shop');
-      Connect::model('user');
-        
-      $data = array();
-      $keys = array("name", "phone", "mail", "password");
-
-      foreach ($keys as $key)
-      {
-        switch ($key)
-        {
-          case 'name': $data[$key] = ShopModel::name($_POST[$key]); break;
-          case 'phone': $data[$key] = ShopModel::phone($_POST[$key]); break;
-          case 'mail': $data[$key] = ShopModel::mail($_POST[$key]); break;
-          case 'password': $data[$key] = ShopModel::password($_POST[$key]); break;
-        }
-          
-        if (!$data[$key]) 
-        {
-            $_SESSION['sreg'][$key] = 'error';
-            header("Location: ".$_SERVER['HTTP_REFERER']);
-        }
-      }
-
-      $data['dr'] = time();
-
-      $user_id = ShopModel::user_registry($data);
-
-      if (!$user_id)
-        header("Location: ".$_SERVER['HTTP_REFERER']);
-      else 
-      {
-        setcookie("user_is", 1, time() + (86400 * 99), "/");
-        setcookie("user_id", $user_id, time() + (86400 * 99), "/");
-        setcookie("user_name", $data['name'], time() + (86400 * 99), "/");
-        setcookie("user_phone", $data['phone'], time() + (86400 * 99), "/");
-        setcookie("user_mail", $data['mail'], time() + (86400 * 99), "/");
-
-        if (isset($_SESSION['is_buy']) && $_SESSION['is_buy'])
-        {
-          $db = Db::connect();
-
-          for ($i = 0; $i < sizeof($_SESSION['box_product']); $i++)
-          {
-            if ($_SESSION['box_was_deleted'][$i])
-                  continue;
-
-              $pid = $_SESSION['box_product'][$i];
-            $uid = $user_id;
-            $t = $_SESSION['box_time'][$i];
-            $number = $_SESSION['box_number'][$i];
-
-            if ($_SESSION['is_buy'] == $pid)
-            {
-              $time = time();
-              $sql = "INSERT INTO `eper`.`buy` (`id`, `product_id`, `number`, `user_id`, `time`, `shop_id`, `dr`) VALUES (NULL, $pid, $number, $uid, $t, 1, $time);";
-              $result = $db->prepare($sql);
-              $result -> execute();
-            }
-            else
-            {
-              $sql = "INSERT INTO `eper`.`want_buy` (`id`, `product_id`, `user_id`, `number`, `dr`) VALUES (NULL, $pid, $uid, $number, $t);";
-              $result = $db->prepare($sql);
-              $result -> execute();
-            }
-          }
-
-          header("Location: http://eper.wf/box"); 
-          exit();
-        }
-      }
-
-      header("Location: http://eper.wf");
-    }
   }
 }
 ?>

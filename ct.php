@@ -170,7 +170,7 @@ class Connect {
     $model_url = ROOT.'/model/'.$model_name.'.php';
 
     if (file_exists($model_url)) require($model_url);
-    else if (isset($_SESSIOn['dev'])) echo 'File not found';
+    else if (isset($_SESSION['dev'])) echo 'File not found';
   }
 
   // Connect handler

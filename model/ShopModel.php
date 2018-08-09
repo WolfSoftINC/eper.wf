@@ -533,31 +533,6 @@ class ShopModel {
     }
   }
 
-  // user registry
-  public static function user_registry($data){
-    $db = Db::connect();
-
-    //print_r($data);
-
-    $sql = "INSERT INTO users (`id`, `password`, `name`, `phone`, `mail`, `dr`) 
-    VALUES (NULL, :password, :name, :phone, :mail, :dr);";
-
-    $result = $db->prepare($sql);
-
-    $result->bindParam(":password", $data['password'], PDO::PARAM_STR);
-    
-    $result->bindParam(":name", $data['name'], PDO::PARAM_INT);
-
-    $result->bindParam(":phone", $data['phone'], PDO::PARAM_STR);
-    $result->bindParam(":mail", $data['mail'], PDO::PARAM_INT);
-
-    $result->bindParam(":dr", $data['dr'], PDO::PARAM_INT);
-
-    if ($result->execute()){
-      return $db->lastInsertId(); 
-    } else return false;
-  }
-
   // shop registry
   public static function registry($data){
     $db = Db::connect();
