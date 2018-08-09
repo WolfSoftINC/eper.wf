@@ -85,7 +85,8 @@ class Connect {
     <link rel="stylesheet" type="text/css" href="/css/grid.css">
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/ajax.js"></script>
-    <script src="/js/box.js"></script>
+
+    <script src="/js/guest/box.js"></script>
     <script src="/js/ct.js"></script>
     <?php
 

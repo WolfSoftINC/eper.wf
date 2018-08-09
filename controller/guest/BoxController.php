@@ -38,7 +38,7 @@ class BoxController {
       );
 
       // check product
-      if (!BoxModel::cProduct($filter)) {
+      if (!BoxModel::veProduct($filter)) {
 
         // data
         $data = array(
@@ -56,6 +56,57 @@ class BoxController {
       } else exit('error');
     }
 
+    // product change
+    if (isset($_POST['pc'])) {
+      Connect::model('box');
+      Connect::model('product');
+
+      // product id
+      $iProduct = $_POST['product_id'];
+
+      // filter
+      $filter = array(
+        0 => array(
+          'key' => 'product_id',
+          'value' => $iProduct,
+          'type' => 'int',
+        ),
+
+        1 => array(
+          'key' => 'ip',
+          'value' => $_SERVER['REMOTE_ADDR'],
+          'type' => 'str',
+        ),
+      );
+
+      // check product
+      if (BoxModel::veProduct($filter)) {
+
+        // number
+        $number = $_POST['number'];
+
+        // data
+        $data = array(
+          0 => array(
+            'key' => 'number',
+            'value' => $number,
+            'type' => 'int',
+          ),
+
+          1 => array(
+            'key' => 'dr',
+            'value' => time(),
+            'type' => 'int',
+          ),
+        );
+
+        // change
+        if (BoxModel::cProduct($data, $filter)) {
+          exit('success');
+        } else exit('error');
+      } else exit('error');      
+    }
+
     // get list
     if (isset($_POST['gl'])) {
       Connect::model('box');
@@ -70,9 +121,9 @@ class BoxController {
       $lProduct = BoxModel::lProduct($data);
 
       // product count
-      $cProduct = count($lProduct);
+      $veProduct = count($lProduct);
 
-      for ($i = 0; $i < $cProduct; $i++) {
+      for ($i = 0; $i < $veProduct; $i++) {
 
         // keys
         $keys = array(

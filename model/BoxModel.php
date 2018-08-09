@@ -2,7 +2,7 @@
 class BoxModel {
 
   // verification of existence product
-  public static function cProduct($filter) {
+  public static function veProduct($filter) {
 
     // filter
     $where = '';
@@ -50,7 +50,51 @@ class BoxModel {
     if ($result->execute()){
       return $db->lastInsertId(); 
     } else return false;
-  }  
+  }
+
+  // product change
+  public static function cProduct($data, $filter) {
+    
+
+    // set
+    $set = '';
+    if ($data) {
+      $set = 'SET ';
+      foreach($data as $e) {
+        if ($e['type'] == 'int') {
+          $set .= '`'.$e['key'].'` = '.$e['value'].', ';
+        } else {
+          $set .= "`".$e['key']."` = '".$e['value']."', ";
+        }
+      }
+      $set = substr($set, 0, -2);
+    }
+
+    // filter
+    $where = '';
+    if ($filter) {
+      $where = 'WHERE ';
+      foreach($filter as $sort) {
+        if ($sort['type'] == 'int') {
+          $where .= '`'.$sort['key'].'` = '.$sort['value'].' AND ';
+        } else {
+          $where .= "`".$sort['key']."` = '".$sort['value']."' AND ";
+        }
+      }
+      $where = substr($where, 0, -5);
+    }
+
+    // connect data
+    $db = Db::connect();
+
+    // sql
+    $sql = "UPDATE want_buy $set $where;";
+
+    $result = $db->prepare($sql);
+
+    if ($result->execute()) return true;
+    else return false;
+  }
 
   // get product list
   public static function lProduct($data) {

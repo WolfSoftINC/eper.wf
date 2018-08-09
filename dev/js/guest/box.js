@@ -21,8 +21,6 @@ class Box {
         if (result == 'success') {
           button.html('Добавлено');
           button.addClass('product__button_added');
-        } else {
-          // location.href = "/registry";
         }
       }
     });
@@ -66,6 +64,7 @@ class Box {
 
     var row = $('<li/>',{
       class: 'box-list__item',
+      id: 'product_' + data['id'],
     })
 
     var content = $('<div/>',{
@@ -105,6 +104,8 @@ class Box {
       class: 'product__price',
       text: data['price'] + 'сом',
     });
+    price.attr('data-type', 'price');
+    price.attr('data-value', data['price']);
     info.append(price);
 
     // select
@@ -112,7 +113,9 @@ class Box {
       class: 'select product__number',
       name: 'number',
       id: 'number',
+      onChange: 'Box.cn('+ data['id'] +')',
     });
+    select.attr('data-product', data['id']);
     info.append(select);
     
     // option
@@ -130,6 +133,7 @@ class Box {
       class: 'product__total',
       text: data['price'] * data['number'] + 'c',
     });
+    total.attr('data-type', 'total');
     info.append(total);
 
     // var bottom = $('<div>',{
@@ -139,5 +143,35 @@ class Box {
     // form.append(bottom);
 
     return row;
+  }
+
+  // change number
+  static cn(id) {
+
+    var select = $('select[data-product="'+ id +'"]');
+    
+    var number = 0;
+    number = select.val();
+
+    var url = '/box/product';
+    var str = 'pc=1';
+
+    str += '&product_id=' + id;
+    str += '&number=' + number;
+
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: str,
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      success: function(result){
+        var row = $('#product_' + id);
+
+        var price = row.find('p[data-type="price"]').data('value');
+        console.log(price);
+        row.find('p[data-type="total"]').html(price * number + 'c');
+
+      }
+    });
   }
 }
