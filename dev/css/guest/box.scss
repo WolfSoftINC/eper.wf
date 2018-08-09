@@ -16,17 +16,6 @@ $color-grey: #c0c4cf;
   &__content {
     padding: 40px;
   }
-
-  &__payment {
-    display: flex;
-    align-items: center;
-    margin-top: 40px;
-    height: 80px;
-    background: $color-blue_d;
-
-    padding: 40px;
-    box-sizing: border-box;
-  }
 }
 
 // box list
@@ -40,5 +29,23 @@ $color-grey: #c0c4cf;
     &:last-child {
       border-bottom: 0px;
     }
+  }
+}
+
+// basket total
+.basket-total {
+  width: 100%;
+  display: table;
+  align-items: center;
+  margin-top: 40px;
+  background: $color-blue_d;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  &__text {
+    color: $color-white;
+    font-size: 24px;
+    font-weight: 500;
   }
 }

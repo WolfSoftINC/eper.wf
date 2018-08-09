@@ -89,26 +89,32 @@ class Box {
 
     // info
     var info = $('<div/>',{
-      class: 'product__info product__info_box',
+      class: 'product__info product__info_box product__info_compare',
     });
     content.append(info);
 
+    // name
+    var wName = $('<div/>',{class: 'narrow_4',}); // name wrap
     var name = $('<p>',{
       class: 'product__title product__title_box',
       text: data['name'],
     });
-    info.append(name);
+    wName.append(name);
+    info.append(wName);
 
     // price
+    var wPrice = $('<div/>',{class: 'narrow_4',}); // price wrap
     var price = $('<p/>',{
       class: 'product__price',
       text: data['price'] + 'сом',
     });
     price.attr('data-type', 'price');
     price.attr('data-value', data['price']);
-    info.append(price);
+    wPrice.append(price);
+    info.append(wPrice);
 
     // select
+    var wSelect = $('<div/>',{class: 'narrow_4',}); // select wrap
     var select = $('<select/>',{
       class: 'select product__number',
       name: 'number',
@@ -116,7 +122,8 @@ class Box {
       onChange: 'Box.cn('+ data['id'] +')',
     });
     select.attr('data-product', data['id']);
-    info.append(select);
+    wSelect.append(select);
+    info.append(wSelect);
     
     // option
     for (var i = 1; i <= 100; i++) {
@@ -129,12 +136,14 @@ class Box {
     }
 
     // total
+    var wTotal = $('<div/>',{class: 'narrow_4',}); // name wrap
     var total = $('<p/>',{
       class: 'product__total',
       text: data['price'] * data['number'] + 'c',
     });
     total.attr('data-type', 'total');
-    info.append(total);
+    wTotal.append(total);
+    info.append(wTotal);
 
     // var bottom = $('<div>',{
     //   class: 'product_box_bottom',
@@ -168,8 +177,8 @@ class Box {
         var row = $('#product_' + id);
 
         var price = row.find('p[data-type="price"]').data('value');
-        console.log(price);
         row.find('p[data-type="total"]').html(price * number + 'c');
+        total('box', 'total');
 
       }
     });

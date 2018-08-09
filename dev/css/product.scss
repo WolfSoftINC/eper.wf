@@ -81,11 +81,15 @@ $color-grey_d: #616161;
 		border-bottom-left-radius: 3px;
 
 		&_box {
-			height: 200px;
-			display: flex;
+			display: block;
+			margin-left: 200px;
+		}
 
+		&_compare {
+			display: flex;
+			height: 200px;
 			justify-content: space-evenly;
-			
+		
 			align-items: center;
 		}
 	}

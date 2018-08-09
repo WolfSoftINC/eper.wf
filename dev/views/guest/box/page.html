@@ -37,9 +37,21 @@
 
         Box.gl('box', data);
       </script>
+    </div>
+    <div class="basket-total row">
+      <div class="product__content product__content_box">
+        <div class="product__info_box">
+          <div class="narrow_4 fl_r">
+            <p id="total" class="basket-total__text">$1000</p>
+          </div>
+          <div class="narrow_4 fl_r">
+            <p class="basket-total__text">
+              Итог:
+            </p>
+          </div> 
+        </div>       
       </div>
-    <div class="box__payment row">
-      <p class="price_total">$1000</p>
+      
     </div>
   </div>
 
@@ -54,3 +66,7 @@
 
 <script src = "/js/timer.js"></script>
 <script src = "/js/total.js"></script>
+
+<script> 
+  total('box', 'total');
+</script>
