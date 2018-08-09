@@ -9,3 +9,24 @@ REWriteRule ^(.*) index.php
 
 # Запрет листинга каталогов
 #Options -Indexes
+
+
+<ifModule mod_expires.c>
+# Compress comressible fonts
+AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-opentype image/svg+xml
+
+# Chahe Images
+ExpiresByType image/x-icon "access plus 2592000 seconds"
+ExpiresByType image/jpeg "access plus 2592000 seconds"
+ExpiresByType image/png "access plus 2592000 seconds"
+ExpiresByType image/gif "access plus 2592000 seconds"
+ExpiresByType image/svg+xml "access plus 2592000 seconds"
+
+# Chahe other content types (Flash, Css, Js, Html, Xml)
+ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+ExpiresByType text/css "access plus 2592000 seconds"
+ExpiresByType text/javascript "access plus 2592000 seconds"
+ExpiresByType text/html "access plus 2592000 seconds"
+ExpiresByType application/xhtml+xml "access plus 2592000 seconds"
+
+</ifModule>
