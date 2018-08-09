@@ -1,10 +1,10 @@
 <?
 if (isset($_SESSION['dev'])) {
 	return array (
-		'Host' => 'localhost',
-		'HostDb' => 'eper',
-		'user' => 'root',
-		'password' => '',
+    'Host' => '176.126.165.135',
+    'HostDb' => 'user41367_dev',
+    'user' => 'user41367_dev',
+    'password' => '0Y6n5V9o',
 	);
 } else {
 	return array (
