@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+
+// js
 var jsmin = require('gulp-jsmin');
+
 var minifyCss = require('gulp-minify-css');
 var htmlmin = require('gulp-htmlmin');
 var imagemin = require('gulp-imagemin');
@@ -61,7 +64,6 @@ gulp.task('jsmin', function(){
 gulp.task('jsmin:watch', function(){
 	gulp.watch('./dev/js/**/*.js', ['jsmin']);
 });
-
 
 // image minify
 gulp.task('imagemin', function(){
