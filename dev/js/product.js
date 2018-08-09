@@ -1,17 +1,19 @@
 class Product {
 
   // get list
-  static gl(id, data) {
+  static gl(id, category, data) {
 
+    var url = 'product/list';
     var str = '';
     str += 'gl=1';
 
+    // shop id
     if (data['shop_id']) {
       str += '&shop_id=' + data['shop_id']; 
     }
 
     $.ajax({
-      url: 'product/list',
+      url: url,
       type: 'POST',
       data: str,
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -26,6 +28,7 @@ class Product {
     });
   }
 
+  // row
   static row(data) {
 
     // row

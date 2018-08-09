@@ -83,12 +83,19 @@ class Connect {
 
     ?>
     <link rel="stylesheet" type="text/css" href="/css/grid.css">
-
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/ajax.js"></script>
     <script src="/js/box.js"></script>
     <script src="/js/ct.js"></script>
     <?php
+
+    if (!isset($_SESSION['dev'])) {
+      ?>
+        <script>
+          Connect.js('/guest/metrica');
+        </script>
+      <?php
+    }
 
     $style = 'common.fonts.product.shop-profile';
 
@@ -114,9 +121,7 @@ class Connect {
       $style = explode('.',$style);
       echo '<script type="text/javascript">';
       foreach($style as $nameStyle){
-        printf('var ms=document.createElement("link"); ms.rel="stylesheet";
-          ms.href="/css/%s.css";document.getElementsByTagName("head")[0].appendChild(ms);
-        ', $nameStyle);
+        printf("Connect.css('%s');", $nameStyle);
       }
       echo '</script>';
     }
