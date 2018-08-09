@@ -101,5 +101,55 @@ class ProductModel {
       return $list;
     } else return false;
   }
+
+  // get data
+  public static function gd($filter, $keys){
+
+    $db = Db::connect();
+
+    // filter
+    $where = '';
+    if ($filter) {
+      $where = 'WHERE ';
+
+      foreach($filter as $sort){
+
+        if ($sort['type'] == 'int') {
+          $where .= '`'.$sort['key'].'` ='.$sort['value'];
+        } else {
+          $where .= "`".$sort['key']."` ='".$sort['value']."'";
+        }
+        
+      }
+    }
+
+    // keys
+    $select = '';
+    foreach ($keys as $key) {
+      $select .= '`'.$key.'`, ';
+    }
+    // del last simvol
+    $select = substr($select, 0, -2);
+
+    // sql
+    $sql = "SELECT $select FROM product $where";
+
+    $result = $db->prepare($sql);
+    if ($result->execute()) {
+      $list = array();
+
+      $i = 0;
+      while($row = $result->fetch()){
+
+        foreach ($keys as $key) {
+          $list[$i][$key] = $row[$key];
+        }
+
+        $i++;
+      }
+
+      return $list;
+    } else return false;
+  }
 }
 ?>

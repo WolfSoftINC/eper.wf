@@ -33,9 +33,9 @@ class	Connect {
 
 	// connect css
 	static css(url) {
-		var ms=document.createElement("link");
-		ms.rel="stylesheet";
-		ms.href="/css/" + url + ".css";
+		var ms = document.createElement("link");
+		ms.rel = "stylesheet";
+		ms.href = "/css/" + url + ".css";
 		document.getElementsByTagName("head")[0].appendChild(ms);
 	}
 }

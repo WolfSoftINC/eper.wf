@@ -53,3 +53,14 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08); }
     .input_form:focus {
       box-shadow: 0px 7px 24px rgba(0, 0, 0, 0.2); }
+
+.select {
+  height: 52px;
+  border: none;
+  border-radius: 3px;
+  padding: 0 17px;
+  box-sizing: border-box;
+  font-size: 17px;
+  line-height: 17px;
+  outline: none;
+  border: 1px solid #ededed; }

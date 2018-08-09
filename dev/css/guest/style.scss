@@ -1,8 +1,14 @@
 $color-white: #fff;
+$color-black: #000;
 $color-blue_d: #0f2868;
 $color-blue_w: #709ce7;
 $color-pink: #fa244a;
+
+// color grey
 $color-grey: #c0c4cf;
+$color-grey_l: #ededed;
+// $color-grey_l: #E0E0E0;
+$color-grey_d: #616161;
 
 // background color
 .bac {
@@ -24,6 +30,18 @@ $color-grey: #c0c4cf;
   display: table;
   width: 100%;
   padding: 76px 0;
+
+  &__header {
+    width: 100%;
+    display: table;
+    padding-top: 76px;
+  }
+
+  &__footer {
+    width: 100%;
+    display: table;
+    padding-top: 76px;
+  }
 
   &__headline {
     display: block;
@@ -98,21 +116,42 @@ $color-grey: #c0c4cf;
 // circle icon
 .cicon {
   display: flex;
-  align-items: center;
   border-radius: 50%;
+
+  width: 64px;
+  height: 64px;
+
+  align-items: center;
   text-align: center;
 
-  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  -moz-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  -webkit-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+  -moz-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 
   &:hover {
-    box-shadow: 0 9px 24px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    box-shadow: 0 9px 24px rgba(0,0,0,0.2);
   }
 
   &_small {
     width: 32px;
     height: 32px;
+  }
+
+  &_center {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &_blue {
+    background: $color-blue_d;
+  }
+
+  &_br {
+    border: 1px solid $color-grey;
+
+    &:hover {
+      box-shadow: none;
+    }
   }
 
   &_header {
@@ -122,8 +161,9 @@ $color-grey: #c0c4cf;
   &__icon {
     font-size: 14px;
     margin: 0 auto;
+    color: $color-grey;
 
-    &_header {
+    &_white {
       color: $color-white;
     }
   }
@@ -252,5 +292,19 @@ $color-grey: #c0c4cf;
   &__logo {
     height: 40px;
     margin: 0 auto;
+  }
+}
+
+// row
+.row {
+  border-radius: 3px;
+}
+
+// total
+.price {
+  &_total {
+    font-size: 24px;
+    font-weight: 600;
+    color: $color-white;
   }
 }

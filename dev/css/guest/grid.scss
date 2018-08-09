@@ -123,3 +123,26 @@ ul, ol {
   }
 }
 /* fl end */
+
+// column
+.col {
+  margin-left: 20px;
+  margin-top: 20px;
+  float: left;
+
+  &s {
+    width: 100%;
+    display: table;
+
+    margin-top: -20px;
+    margin-left: -20px;
+    &_4 {
+      @extend .cols;
+      & .col {
+        @extend .col;
+
+        width: calc(25% - 20px);
+      }
+    } 
+  }
+}

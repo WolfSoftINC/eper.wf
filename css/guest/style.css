@@ -9,6 +9,14 @@
   display: table;
   width: 100%;
   padding: 76px 0; }
+  .section__header {
+    width: 100%;
+    display: table;
+    padding-top: 76px; }
+  .section__footer {
+    width: 100%;
+    display: table;
+    padding-top: 76px; }
   .section__headline {
     display: block;
     margin-bottom: .5em;
@@ -56,23 +64,35 @@
 
 .cicon {
   display: flex;
-  align-items: center;
   border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  align-items: center;
   text-align: center;
-  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  -moz-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -moz-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
   .cicon:hover {
-    box-shadow: 0 9px 24px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22); }
+    box-shadow: 0 9px 24px rgba(0, 0, 0, 0.2); }
   .cicon_small {
     width: 32px;
     height: 32px; }
+  .cicon_center {
+    margin-right: auto;
+    margin-left: auto; }
+  .cicon_blue {
+    background: #0f2868; }
+  .cicon_br {
+    border: 1px solid #c0c4cf; }
+    .cicon_br:hover {
+      box-shadow: none; }
   .cicon_header {
     background: #fa244a; }
   .cicon__icon {
     font-size: 14px;
-    margin: 0 auto; }
-    .cicon__icon_header {
+    margin: 0 auto;
+    color: #c0c4cf; }
+    .cicon__icon_white {
       color: #fff; }
 
 .button {
@@ -148,3 +168,11 @@
 .shop__logo {
   height: 40px;
   margin: 0 auto; }
+
+.row {
+  border-radius: 3px; }
+
+.price_total {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff; }

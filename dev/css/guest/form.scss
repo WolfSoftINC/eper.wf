@@ -3,7 +3,12 @@ $color-black: #000;
 $color-blue_d: #0f2868;
 $color-blue_w: #709ce7;
 $color-pink: #fa244a;
+
+// color grey
 $color-grey: #c0c4cf;
+$color-grey_l: #ededed;
+// $color-grey_l: #E0E0E0;
+$color-grey_d: #616161;
 
 
 // form
@@ -95,4 +100,21 @@ $color-grey: #c0c4cf;
       box-shadow: 0px 7px 24px rgba(0,0,0, .2);
     }
   }
+}
+
+// select
+.select {
+  height: 52px;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 0 17px;
+  box-sizing: border-box;
+
+  font-size: 17px;
+  line-height: 17px;
+
+  outline: none;
+  border: 1px solid $color-grey_l;
 }

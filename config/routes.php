@@ -6,11 +6,12 @@ switch ($_SESSION['user']) {
       // handler
       'shop/lhan' => 'shopHan/login',
 
+      // box
+      'box/product' => 'box/product',
+      'box/padd' => 'box/product',
+
       // box page
       'box' => 'box/page',
-
-      // box
-      'box/padd' => 'box/product/add',
 
       // product
       'product/list' => 'product/glist',

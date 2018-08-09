@@ -75,3 +75,14 @@ ul, ol {
   margin-right: auto; }
 
 /* fl end */
+.col, .cols_4 .col {
+  margin-left: 20px;
+  margin-top: 20px;
+  float: left; }
+  .cols, .cols_4 {
+    width: 100%;
+    display: table;
+    margin-top: -20px;
+    margin-left: -20px; }
+    .cols_4 .col {
+      width: calc(25% - 20px); }
