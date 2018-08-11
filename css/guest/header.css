@@ -35,3 +35,11 @@
         transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
       .hnav__item_bb:hover::before {
         opacity: 1; }
+
+@media (max-width: 805px) {
+  .hnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    visibility: hidden; } }

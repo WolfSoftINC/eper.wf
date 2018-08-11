@@ -159,8 +159,23 @@ ul, ol {
 
 // column
 .column {
-  &__wide {
+  &_wide {
     width: 805px;
     float: left;
+  }
+}
+// adaptability
+@media (max-width: 1080px) {
+  .column {
+    &_wide {
+      width: 530px;
+    }
+  }
+}
+@media (max-width: 805px) {
+  .column {
+    &_wide {
+      width: 100%;
+    }
   }
 }

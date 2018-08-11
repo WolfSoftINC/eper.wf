@@ -89,6 +89,14 @@ ul, ol {
     .cols_4 .col {
       width: calc(25% - 20px); }
 
-.column__wide {
+.column_wide {
   width: 805px;
   float: left; }
+
+@media (max-width: 1080px) {
+  .column_wide {
+    width: 530px; } }
+
+@media (max-width: 805px) {
+  .column_wide {
+    width: 100%; } }

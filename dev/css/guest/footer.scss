@@ -1,10 +1,20 @@
+// color
+$color-black: #000;
 $color-white: #fff;
 $color-blue_d: #0f2868;
 $color-blue_w: #709ce7;
 $color-pink: #fa244a;
 
+// color grey
+$color-grey: #c0c4cf;
+$color-grey_l: #ededed;
+// $color-grey_l: #E0E0E0;
+$color-grey_d: #616161;
+
 // footer
 .footer {
+  background: $color-grey_l;
+  
   &__row {
     float: left;
     margin-left: 40px;

@@ -22,7 +22,6 @@ $color-grey_d: #616161;
 
   &__banner {
     float: left;
-    width: 805px;
     height: 325px;
 
     overflow: hidden;
@@ -57,6 +56,15 @@ $color-grey_d: #616161;
     box-sizing: border-box;
   }
 }
+// adaptability
+@media (max-width: 805px) {
+  .sp {
+    &__deter {
+      display: none;
+    }
+  } 
+}
+
 // shop nav
 .snav {
   &__list {

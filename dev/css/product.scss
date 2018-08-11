@@ -164,6 +164,14 @@ $color-grey_d: #616161;
 		}
 	}
 }
+// adaptability
+@media (max-width: 805px) {
+	.product {
+		&__row {
+			width: calc(50% - 20px);
+		}
+	}
+}
 
 .product_shop_name{
 	color: grey;

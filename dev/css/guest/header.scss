@@ -67,3 +67,15 @@ $color-blue_l: #1a46b1;
     }
   }
 }
+// adaptability
+@media (max-width: 805px) {
+  .hnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: $color-white;
+
+    visibility: hidden;
+  }
+}
