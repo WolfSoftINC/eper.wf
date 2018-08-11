@@ -88,6 +88,22 @@ class UserController {
   // User Profile
 
   function ProfileAction(){
+    if (isset($_POST['gl']) && $_POST['gl'])
+    {
+      Connect::model('user');
+
+      if (isset($_POST['user_id']) && $_POST['user_id']) $user_id = $_POST['user_id'];
+      else $user_id = $_COOKIE['user_id'];
+
+      $data = array("id" => $user_id);
+
+      $list = UserModel::get_data($data);
+
+      echo json_encode($list);
+      
+      return;
+    }
+
       Connect::head();
       Connect::view('d', 'header');
       Connect::view('', 'user/profile');

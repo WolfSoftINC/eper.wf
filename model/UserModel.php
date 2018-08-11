@@ -50,6 +50,27 @@ class UserModel {
     }
   }
 
+  // get user data
+  public static function get_data($data){
+    $db = Db::connect();
+    $id = $data['id'];
+    
+    $sql = "SELECT * FROM  `user` WHERE  `user_id` = $id";
+    $keys = array("user_id", "login", "password", "name", "phone", "mail", "dr");
+    
+    $result = $db -> prepare($sql);
+    $result -> execute();
+    
+    $row = $result -> fetch();
+    $list = array();
+
+    foreach($keys as $key) {
+      $list[$key] = $row[$key];
+    }
+
+    return $list;
+  }
+
   // user registry
   public static function registry($data) {
     $db = Db::connect();
