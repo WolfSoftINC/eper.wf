@@ -12,8 +12,7 @@ class UserModel {
 
   // check phone
   public static function phone($a){
-    if (strlen($a) == 0)
-      return false;
+    if (strlen($a) == 0) return false;
     $a = preg_replace('~[^0-9]+~','',$a);
 
     // check
@@ -26,9 +25,14 @@ class UserModel {
 
   // check mail
   public static function mail($mail){
+    
+    // del all space
+    $mail = trim($mail);
+    str_replace(' ','',$mail);
+
+    // check mail
     if (strlen($mail) == 0)
       return false;
-    str_replace(' ','',$mail);
 
     if (preg_match("/^([a-zA-Z0-9])+([\.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)*\.([a-zA-Z]{2,6})$/", $mail)) {
       return htmlspecialchars($mail);

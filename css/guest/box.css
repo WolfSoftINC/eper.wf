@@ -3,9 +3,17 @@
   box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.06) !important;
   width: 100%;
   margin-top: 50px; }
+  .box__wrap_confirm {
+    background: #0f2868; }
 
 .box__content {
   padding: 40px; }
+
+.box__headline {
+  display: block;
+  max-width: 38em;
+  font-size: 24px;
+  color: #fff; }
 
 .box-list__item {
   display: block;

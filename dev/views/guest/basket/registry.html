@@ -5,16 +5,16 @@
       <div class="cols_4">
         <div class="col">
           <div class="cicon cicon_br cicon_center">
-            <i class="fas fa-shopping-basket cicon__icon cicon__icon_white"></i>
+            <i class="fas fa-shopping-basket cicon__icon"></i>
+          </div>
+        </div>
+        <div class="col">
+          <div class="cicon cicon_blue cicon_center">
+            <i class="fa fa-id-card cicon__icon cicon__icon_white"></i>
           </div>
         </div>
         <div class="col">
           <div class="cicon cicon_br cicon_center">
-            <i class="fa fa-id-card cicon__icon"></i>
-          </div>
-        </div>
-        <div class="col">
-          <div class="cicon cicon_blue cicon_br cicon_center">
             <i class="fa fa-car cicon__icon"></i>
           </div>
         </div>
@@ -29,31 +29,32 @@
     <div class="section__footer">
       <div class="box__wrap">
         <div class="form__wrap form__wrap_wide form__wrap_center">
-          <div id="sd" class="form__content form__content_wide">
+          <div id="ur" class="form__content form__content_wide">
             <div class="form__header">
-              <h2 class="form__headline form__headline_basket">Детали доставки</h2>  
+              <h2 class="form__headline form__headline_basket">Регистрация</h2>  
+            </div>
+
+            <div class="form__row">
+              <p class="frow__title">Имя</p>
+              <input type="text" name="name" class="input input_wide input_form">
             </div>
 
             <div class="frow">
               <div class="cols_2">
                 <div class="col">
-                  <p class="frow__title">Страна</p>
-                  <select name="country" class="select select_wide">
-                    <option value="1">Кыргызстан</option>
-                  </select>
+                  <p class="frow__title">Номер телефона</p>
+                  <input type="text" name="phone" class="input input_wide input_form">
                 </div>
                 <div class="col">
-                  <p class="frow__title">Город</p>
-                  <select name="city" class="select select_wide">
-                    <option value="1">Бишкек</option>
-                  </select>
+                  <p class="frow__title">Электронная почта</p>
+                  <input type="text" name="mail" class="input input_wide input_form">
                 </div>
               </div>
             </div>
 
             <div class="form__row">
-              <p class="frow__title">Адрес</p>
-              <input type="text" name="address" class="input input_wide input_form">
+              <p class="frow__title">Пароль</p>
+              <input type="password" name="password" class="input input_wide input_form">
             </div>
           </div>
         </div>
@@ -66,7 +67,7 @@
     <div class="container">
       <div class="fl_c">
         <a href="/box/buy" class="button button_basket">Купить</a>
-        <a class="button button_blue button_basket" onClick="Box.sd('sd');">Подтвердить</a>
+        <a class="button button_blue button_basket" onClick="Box.ur('ur')">Зарегистрироваться</a>
       </div>
     </div>
   </div>

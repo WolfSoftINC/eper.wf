@@ -17,6 +17,9 @@ switch ($_SESSION['user']) {
       // product
       'product/list' => 'product/glist',
 
+      // delivery
+      'delivery' => 'delivery/index',
+
       'do' => 'user/do',
       'user/add_box' => 'user/add_box',
       

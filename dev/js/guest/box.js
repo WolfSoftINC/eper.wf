@@ -17,7 +17,6 @@ class Box {
       data: str,
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       success: function(result){
-        console.log(result);
         if (result == 'success') {
           button.html('Добавлено');
           button.addClass('product__button_added');
@@ -54,6 +53,8 @@ class Box {
           var row = Box.rProduct(data);
           $('#' + id).append(row);
         });
+
+        if (id == 'box') total('box', 'total');
       }
     });
   }
@@ -145,12 +146,6 @@ class Box {
     wTotal.append(total);
     info.append(wTotal);
 
-    // var bottom = $('<div>',{
-    //   class: 'product_box_bottom',
-    //   html: '<div class="product_box_bottom_left"><p id="total"></p></div><input type="hidden" id="cost" value=""><div class="product_box_bottom_right"><input type="submit" name="is_del" value="Удалить"><input type="submit" name="is_buy" value="Купить"> </div>',
-    // });
-    // form.append(bottom);
-
     return row;
   }
 
@@ -180,6 +175,60 @@ class Box {
         row.find('p[data-type="total"]').html(price * number + 'c');
         total('box', 'total');
 
+      }
+    });
+  }
+
+  // user registry
+  static ur(id) {
+    var form = $('#' + id);
+
+    var url = '/user/auth';
+    var str = 'reg=1';
+
+    var keys = ['name', 'phone', 'mail', 'password'];
+    keys.forEach(function(key){
+
+      var val = form.find('[name="'+ key +'"]').val();
+
+      str += '&' + key + '=' + val;
+    });
+
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: str,
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      success: function(result){
+        if (result == 'success')  window.location.href = '/box/buy?act=delivery';
+      }
+    });
+  }
+
+  // Shipping Details
+  static sd(id) {
+
+    // sd form
+    var form = $('#' + id);
+
+    var url = '/delivery/add';
+    var str = 'da=1';
+
+    var keys = ['country', 'city', 'address'];
+    keys.forEach(function(key){
+
+      var val = form.find('[name="'+ key +'"]').val();
+
+      str += '&' + key + '=' + val;
+    });
+
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: str,
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      success: function(result){
+        if (result == 'success')  window.location.href = '/box/buy?act=confirm';
       }
     });
   }

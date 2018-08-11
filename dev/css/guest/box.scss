@@ -11,10 +11,22 @@ $color-grey: #c0c4cf;
     box-shadow: 0 8px 24px 0 rgba(0,0,0,0.06)!important;
     width: 100%;
     margin-top: 50px;
+
+    &_confirm {
+      background: $color-blue_d;
+    }
   }
 
   &__content {
     padding: 40px;
+  }
+
+  &__headline {
+    display: block;
+    max-width: 38em;
+
+    font-size: 24px;
+    color: $color-white;
   }
 }
 

@@ -20,7 +20,7 @@ $color-grey_d: #616161;
 // color
 .color {
   &_white {
-    color: $color-white;
+    color: $color-white!important;
   }
 }
 
@@ -29,7 +29,7 @@ $color-grey_d: #616161;
   position: relative;
   display: table;
   width: 100%;
-  padding: 76px 0;
+  padding: 40px 0;
 
   &__header {
     width: 100%;
@@ -273,6 +273,9 @@ $color-grey_d: #616161;
 
 // text
 .text {
+  &_center {
+    text-align: center;
+  }
   &__wrap {
     &_footer {
       max-width: 20em;
@@ -323,4 +326,13 @@ $color-grey_d: #616161;
     font-weight: 600;
     color: $color-white;
   }
+}
+
+// block
+.block {
+  position: relative;
+  border-radius: 3px;
+  background: $color-grey_l;
+  box-sizing: border-box;
+  margin: 20px 0 0;
 }

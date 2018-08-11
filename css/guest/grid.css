@@ -88,3 +88,7 @@ ul, ol {
       width: calc(50% - 20px); }
     .cols_4 .col {
       width: calc(25% - 20px); }
+
+.column__wide {
+  width: 805px;
+  float: left; }

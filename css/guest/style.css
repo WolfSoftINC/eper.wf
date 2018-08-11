@@ -2,13 +2,13 @@
   background: #0f2868; }
 
 .color_white {
-  color: #fff; }
+  color: #fff !important; }
 
 .section {
   position: relative;
   display: table;
   width: 100%;
-  padding: 76px 0; }
+  padding: 40px 0; }
   .section__header {
     width: 100%;
     display: table;
@@ -158,6 +158,9 @@
     font-weight: 600;
     color: #0f2868; }
 
+.text_center {
+  text-align: center; }
+
 .text__wrap_footer {
   max-width: 20em; }
 
@@ -185,3 +188,10 @@
   font-size: 24px;
   font-weight: 600;
   color: #fff; }
+
+.block {
+  position: relative;
+  border-radius: 3px;
+  background: #ededed;
+  box-sizing: border-box;
+  margin: 20px 0 0; }

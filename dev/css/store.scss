@@ -1,0 +1,30 @@
+// color
+$color-black: #000;
+$color-white: #fff;
+$color-blue_d: #0f2868;
+$color-blue_w: #709ce7;
+$color-pink: #fa244a;
+
+// color grey
+$color-grey: #c0c4cf;
+$color-grey_l: #ededed;
+$color-grey_d: #616161;
+
+.store {
+  &__name {
+    display: block;
+    font-size: 24px;
+    color: $color-blue_d;
+
+    line-height: 30px;
+  }
+
+  &__category {
+    display: block;
+    font-size: 14px;
+    color: $color-black;
+
+    line-height: 17px;
+    margin-top: 3px;
+  }
+}

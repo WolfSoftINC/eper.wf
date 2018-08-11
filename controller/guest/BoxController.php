@@ -22,9 +22,21 @@ class BoxController {
         Connect::view('', 'basket/delivery');
         Connect::view('d', 'footer');
       }
+      if ($_GET['act'] == 'confirm') {
+        Connect::head();
+        Connect::view('d', 'header');
+        Connect::view('', 'basket/confirm');
+        Connect::view('d', 'footer');
+      }
     } else {
       if (isset($_COOKIE['user_id'])) {
         header('Location: /box/buy?act=delivery');
+      } else {
+        Connect::head();
+
+        Connect::view('d', 'header');
+        Connect::view('', 'basket/registry');
+        Connect::view('d', 'footer');
       }
     }
   }
@@ -72,7 +84,7 @@ class BoxController {
         if ($iBuy) {
           exit('success');
         } else exit('error');
-      } else exit('error');
+      } else exit('success');
     }
 
     // product change

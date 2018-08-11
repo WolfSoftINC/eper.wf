@@ -156,3 +156,11 @@ ul, ol {
     } 
   }
 }
+
+// column
+.column {
+  &__wide {
+    width: 805px;
+    float: left;
+  }
+}
