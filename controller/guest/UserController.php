@@ -140,6 +140,24 @@ class UserController {
       return;
     }
 
+    if (isset($_POST['phone']) && $_POST['phone'])
+    {
+      Connect::model('user');
+      
+      $phone = UserModel::phone($_POST['user_phone']);
+      
+      $c = 0;
+
+      if ($phone != false)
+        $c = UserModel::update_phone($_POST['user_id'], $phone);
+      if (!$c)
+        $phone = false;
+        
+      echo json_encode($phone);
+
+      return;
+    }
+
       Connect::head();
       Connect::view('d', 'header');
       Connect::view('', 'user/profile');

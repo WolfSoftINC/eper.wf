@@ -59,6 +59,20 @@ class UserModel {
     }
   }
 
+  // update phone
+  public static function update_phone($id, $name)
+  {
+    $db = Db::connect();
+
+    $sql = "UPDATE  `user41367_dev`.`user` SET  `name` =  :name WHERE  `user`.`user_id` = $id;";
+    $result = $db->prepare($sql);
+    $result->bindParam(":name", $name, PDO::PARAM_STR);
+    
+    $ok =  $result->execute();
+    
+    return $ok;
+  }
+
   // check mail
   public static function mail($mail){
     

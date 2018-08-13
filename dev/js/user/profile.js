@@ -17,6 +17,7 @@ class Profile{
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             
             success: function(list){
+                console.log(list);
 
                 list = JSON.parse(list);
                 
@@ -48,9 +49,7 @@ class Profile{
                 });
                 
                 $('#phone_button').click(function() {
-                    var row = Profile.edit(list['phone'], "Номер телефона", "phone");
-                    $('#phone_block').remove();
-                    $('#name_block').after(row);
+                    Profile.update_phone(list, url, 1);
                 });
                 
                 $('#mail_button').click(function() {
@@ -302,6 +301,62 @@ class Profile{
                 
                 $('#name_button').click(function(){
                     Profile.update_name(list, url, 1);
+                });
+            }
+        });
+    }
+
+    //Update phone
+    static update_phone(list, url, type) {
+      
+        if (type == 1)
+        {
+            var row = Profile.edit(list['phone'], "Номер телефона", "phone");
+            $('#phone_block').remove();
+            $('#name_block').after(row);
+
+            $('#phone_update_button').click(function(){
+                Profile.update_phone(list, url, 0);
+            });
+
+            $('#phone_cancel_button').click(function(){
+                var row = Profile.initial_row(list['phone'], "Номер телефона", "phone");
+                $('#phone_block').remove();
+                $('#name_block').after(row);
+
+                $('#phone_button').click(function() {
+                    Profile.update_phone(list, url, 1);
+                });
+            });
+
+            return;
+        }
+
+        var str = "phone=1&user_id=" + list['user_id'] + "&user_name=" + $('#phone_value').val();
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: str,
+            success: function(data){
+                data = JSON.parse(data);
+
+                if (data == false)
+                {
+                    alert("Ошибка Пароля!");
+                    data = list['phone'];
+                }
+                else
+                {
+                    list['phone'] = data;
+                }
+
+                var row = Profile.initial_row(data, "Номер Телефона", "phone");
+                $('#phone_block').remove();
+                $('#name_block').after(row);
+                
+                $('#phone_button').click(function(){
+                    Profile.update_phone(list, url, 1);
                 });
             }
         });
