@@ -1,5 +1,28 @@
 <?php
 class UserModel {
+  
+  public static function clogin($login){
+    if (strlen($login) == 0)
+      return false;
+    $login = trim($login);
+
+    if ((strlen($login) < 7) || (strlen($login) > 25) || (!preg_match('/^[a-zA-Z0-9_.]{7,25}$/',$login)) || (substr($login,0,1) == '_') || (substr($login,0,1) == '.')) return false;
+    else return htmlspecialchars(trim($login));
+  }
+
+  // update login
+  public static function update_login($id, $login)
+  {
+    $db = Db::connect();
+
+    $sql = "UPDATE  `user41367_dev`.`user` SET  `login` =  :login WHERE  `user`.`user_id` = $id;";
+    $result = $db->prepare($sql);
+    $result->bindParam(":login", $login, PDO::PARAM_STR);
+    
+    $ok =  $result->execute();
+    
+    return $ok;
+  }
 
   // check name
   public static function name($name){
@@ -8,6 +31,19 @@ class UserModel {
     // check length
     if ((strlen($name) > 40) OR (strlen($name) < 1)) return false;
     else return htmlspecialchars($name);
+  }
+  // update name
+  public static function update_name($id, $name)
+  {
+    $db = Db::connect();
+
+    $sql = "UPDATE  `user41367_dev`.`user` SET  `name` =  :name WHERE  `user`.`user_id` = $id;";
+    $result = $db->prepare($sql);
+    $result->bindParam(":name", $name, PDO::PARAM_STR);
+    
+    $ok =  $result->execute();
+    
+    return $ok;
   }
 
   // check phone
@@ -52,6 +88,7 @@ class UserModel {
 
   // get user data
   public static function get_data($data){
+
     $db = Db::connect();
     $id = $data['id'];
     

@@ -104,6 +104,42 @@ class UserController {
       return;
     }
 
+    if (isset($_POST['login']) && $_POST['login'])
+    {
+      Connect::model('user');
+      
+      $login = UserModel::clogin($_POST['user_login']);
+      
+      $c = 0;
+
+      if ($login != false)
+        $c = UserModel::update_login($_POST['user_id'], $login);
+      if (!$c)
+        $login = false;
+
+      echo json_encode($login);
+
+      return;
+    }
+
+    if (isset($_POST['name']) && $_POST['name'])
+    {
+      Connect::model('user');
+      
+      $name = UserModel::name($_POST['user_name']);
+      
+      $c = 0;
+
+      if ($name != false)
+        $c = UserModel::update_name($_POST['user_id'], $name);
+      if (!$c)
+        $name = false;
+        
+      echo json_encode($name);
+
+      return;
+    }
+
       Connect::head();
       Connect::view('d', 'header');
       Connect::view('', 'user/profile');
